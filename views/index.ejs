@@ -1,0 +1,113 @@
+<!DOCTYPE html>                                                                                                                                                                                             
+<html>                                                                                                                                                                                                      
+        <head>
+		<meta charset="UTF-8">
+                <title>Bot Auto Responder</title>                                                                                                                                                           
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />                                                                                      
+                <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>                                                                                                  
+                <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>                                                                          
+		<script type="text/javascript" src="/js/growl.js"></script>
+                <script type="text/javascript" src="/js/funcs.js"></script>                                                                                                                                 
+                <script type="text/javascript" src="/js/index.js"></script>                                                                                                                                 
+        </head>                                                                                                                                                                                             
+        <body style="padding-top: 5em;">
+                <div class="container"> 
+			<div class="col-sm-3">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Prompts</h3>
+					</div>
+					<div class="panel-body">
+						<div class="input-group">
+							<input type="text" class="form-control" id="add_prompt" placeholder="New Prompt..">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button" id="add_prompt_button">Add</button>
+							</span>
+						</div>
+					</div>
+					<div class="list-group" id="prompts_list">
+
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="row">
+					<div class="col-sm-6 col-sm-offset-6">
+						<div class="input-group">
+							<input type="text" class="form-control" id="add_message" placeholder="New Message...">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button" id="add_message_button">Add</button>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Message</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody id="messages_list"></tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="remove_prompt_modal" tabindex="-1" role="dialog" aria-labelledby="remove_prompt_modal_label">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="remove_prompt_modal_label" data-id="label">Remove Prompt</h4>
+					</div>
+					<div class="modal-body">
+						<div class="alert alert-danger">
+							Are you sure you want to do that? This will remove all messages as well.
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" data-id="submit" class="btn btn-danger">Remove</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="remove_message_modal" tabindex="-1" role="dialog" aria-labelledby="remove_message_modal_label">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="remove_message_modal_label" data-id="label">Remove Prompt</h4>
+					</div>
+					<div class="modal-body">
+						<div class="alert alert-danger">
+							Are you sure you want to do that?
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" data-id="submit" class="btn btn-danger">Remove</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div style="display: none;">
+			<a href="#" class="list-group-item" id="skeleton_prompt_row">
+				<span data-id="prompt"></span>
+				<span class="badge" data-id="badge" style="cursor: pointer;">&times;</span>
+			</a>
+			<table><tbody>
+				<tr id="skeleton_message_row">
+					<td data-id="message"></td>
+					<td>
+						<a href="#" data-id="remove" class="btn btn-danger btn-sm">Remove</a>
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+	</body>
+</html>
